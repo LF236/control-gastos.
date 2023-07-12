@@ -8,23 +8,23 @@ body {
     -ms-overflow-style: none !important;
     scrollbar-width: none !important;
     scroll-behavior: smooth;
-
     border-bottom-right-radius: 35px;
     border-bottom-left-radius: 35px;
     overflow-x: scroll;
-    // justify-content: center;
-    // display: flex;
+    justify-content: center;
+    display: flex;
     height: 60px;
-    scroll-behavior: smooth;
+
+    @media only screen and ( max-width: 1021px ) {
+        justify-content: flex-start;
+    }
+
     &.dragging {
         scroll-behavior: auto;
-        background: red;
         .nav {
             li {
                 a {
                     pointer-events: none;
-                    background: blueviolet;
-
                 }
             }
         }
@@ -33,28 +33,21 @@ body {
     .nav {
         flex-wrap: nowrap !important;
         align-items: flex-end;
-        max-height: 60px;
-        
+        max-height: 60px;        
         li {
-            padding: 10px 0;
-            
-            a {
-                
+            padding: 10px 0;            
+            a {                
                 display: flex;
                 align-items: flex-start;
                 color: #FFF;
-                font-family: PT Sans;
+                // font-family: PT Sans;
                 font-size: 1.1rem;
                 user-select: none;
-                // background: steelblue;
-                transition: all .5s;
-                // pointer-events: none;
+                transition: font .1s;
                 &.active {
-                    // color: red;
                     font-weight: bold;
                     font-size: 1.3rem;
                 }
-
             }
         }
     }

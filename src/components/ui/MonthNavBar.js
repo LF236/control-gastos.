@@ -4,16 +4,14 @@ const moths = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 
 const MonthNavBar = () => {
     const [ activeMoth, setActiveMonth ] = useState( 'Enero' );
     const navContentRef = useRef( null );
-    let dragConent = false;
+    const dragConent = useRef( false );
 
     const handleChangeMoth = ( moth )  => {
         setActiveMonth( moth );
-        console.log( navContentRef );
     }
 
     const drag = (e) => {
-        if (!dragConent) return;
-        console.log( navContentRef )
+        if( !dragConent.current ) return;
         if( navContentRef.current ) navContentRef.current.classList.add( 'dragging' );
         if( navContentRef.current ) navContentRef.current.scrollLeft -= e.movementX;
     };
@@ -21,37 +19,36 @@ const MonthNavBar = () => {
     useEffect( () => {
         if( navContentRef.current ) {
             navContentRef.current.addEventListener( 'mousedown', () => {
-                console.log( 'Mouse down' );
-                dragConent = true;
-                console.log( dragConent );
+                dragConent.current = true;
             });
             
             navContentRef.current.addEventListener( 'mousemove', drag);
             
             document.addEventListener( 'mouseup', () => {
-                console.log( 'MOUSE UP' )
-                dragConent = false;
+                dragConent.current = false;
                 if( navContentRef.current ) navContentRef.current.classList.remove( 'dragging');
             });
         }
     }, [ navContentRef.current ] );
 
     return (
-        <div className='nav-content' ref={ navContentRef }>
-            <ul className='nav' >
-                { moths.map( ele => (
-                    <li className='nav-item'>
-                        <a 
-                            className={ `nav-link ${ ( ele === activeMoth )&& 'active' }` }
-                            href='#'
-                            onClick={ () => handleChangeMoth( ele ) }
-                        >
-                            { ele }
-                        </a>
-                    </li>
-                ) ) }       
-            </ul>
-        </div>
+        // <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div className='nav-content' ref={ navContentRef }>
+                <ul className='nav' >
+                    { moths.map( ele => (
+                        <li className='nav-item' key={ ele }>
+                            <a 
+                                className={ `nav-link ${ ( ele === activeMoth )&& 'active' }` }
+                                href='#'
+                                onClick={ () => handleChangeMoth( ele ) }
+                            >
+                                { ele }
+                            </a>
+                        </li>
+                    ) ) }       
+                </ul>
+            </div>
+        // </div>
     );
 }
 
