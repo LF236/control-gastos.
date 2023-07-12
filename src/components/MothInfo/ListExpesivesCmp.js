@@ -18,7 +18,7 @@ const ListExpesivesCmp = () => {
                 </li>
                 <li className='list-group-item mb-2 d-flex justify-content-between align-items-center list-item'>
                     <div className='list-item-left'>
-                        <i className="fa fa-circle shadow complete-false" aria-hidden="true" />
+                        <i className='fa fa-circle shadow complete-false' aria-hidden='true' />
                         <span>Dapibus ac facilisis in</span>
                     </div>
                     
@@ -27,106 +27,49 @@ const ListExpesivesCmp = () => {
                         <i className='fa fa-angle-down' aria-hidden='true'/>
                     </div>
                 </li>
-                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center'>
-                    Morbi leo risus
+
+                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center list-item'>
+                    <div className='list-item-left'>
+                        <i className='far fa-circle incomplete'/>
+                        <span>Morbi leo risus</span>
+                    </div>
+                    
                     <div>
                         <span className='mr-2'>-97.63</span>
                         <i className='fa fa-angle-down' aria-hidden='true'/>
                     </div>
                 </li>
-                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center'>
-                    Porta ac consectetur ac
+
+                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center list-item'>
+                    <div className='list-item-left'>
+                        <i className='far fa-circle incomplete'/>
+                        <span>Morbi leo risus</span>
+                    </div>
+                    
                     <div>
                         <span className='mr-2'>-97.63</span>
                         <i className='fa fa-angle-down' aria-hidden='true'/>
                     </div>
                 </li>
-                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center'>
-                    Vestibulum at eros
+
+                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center list-item'>
+                    <div className='list-item-left'>
+                        <i className='far fa-circle incomplete'/>
+                        <span>Morbi leo risus</span>
+                    </div>
+                    
                     <div>
                         <span className='mr-2'>-97.63</span>
                         <i className='fa fa-angle-down' aria-hidden='true'/>
                     </div>
-                </li>
+                </li>                                              
             </ul>
 
             <span className='font-weight-bold'>Ayer - 5 Dic</span>
-            <ul className='list-group mt-2'>
-                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center'>
-                    Cras justo odio
-                    <div>
-                        <span className='mr-2'>-97.63</span>
-                        <i className='fa fa-angle-down' aria-hidden='true'/>
-                    </div>
-                </li>
-                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center'>
-                    Dapibus ac facilisis in
-                    <div>
-                        <span className='mr-2'>-97.63</span>
-                        <i className='fa fa-angle-down' aria-hidden='true'/>
-                    </div>
-                </li>
-                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center'>
-                    Morbi leo risus
-                    <div>
-                        <span className='mr-2'>-97.63</span>
-                        <i className='fa fa-angle-down' aria-hidden='true'/>
-                    </div>
-                </li>
-                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center'>
-                    Porta ac consectetur ac
-                    <div>
-                        <span className='mr-2'>-97.63</span>
-                        <i className='fa fa-angle-down' aria-hidden='true'/>
-                    </div>
-                </li>
-                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center'>
-                    Vestibulum at eros
-                    <div>
-                        <span className='mr-2'>-97.63</span>
-                        <i className='fa fa-angle-down' aria-hidden='true'/>
-                    </div>
-                </li>
-            </ul>
+     
 
             <span className='font-weight-bold'>Antier - 4 Dic</span>
-            <ul className='list-group mt-2'>
-                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center'>
-                    Cras justo odio
-                    <div>
-                        <span className='mr-2'>-97.63</span>
-                        <i className='fa fa-angle-down' aria-hidden='true'/>
-                    </div>
-                </li>
-                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center'>
-                    Dapibus ac facilisis in
-                    <div>
-                        <span className='mr-2'>-97.63</span>
-                        <i className='fa fa-angle-down' aria-hidden='true'/>
-                    </div>
-                </li>
-                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center'>
-                    Morbi leo risus
-                    <div>
-                        <span className='mr-2'>-97.63</span>
-                        <i className='fa fa-angle-down' aria-hidden='true'/>
-                    </div>
-                </li>
-                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center'>
-                    Porta ac consectetur ac
-                    <div>
-                        <span className='mr-2'>-97.63</span>
-                        <i className='fa fa-angle-down' aria-hidden='true'/>
-                    </div>
-                </li>
-                <li className='list-group-item mb-2 d-flex justify-content-between align-items-center'>
-                    Vestibulum at eros
-                    <div>
-                        <span className='mr-2'>-97.63</span>
-                        <i className='fa fa-angle-down' aria-hidden='true'/>
-                    </div>
-                </li>
-            </ul>
+           
         </div>
     );
 }
