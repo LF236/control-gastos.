@@ -1,13 +1,19 @@
-import React, { useState, useEffect, createRef, useRef } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
+import { CostContext } from '../../context/CostContext';
+import { months } from '../../assets/months';
 import '../../styles/components/mothNavBar.scss';
-const moths = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' ];
+
 const MonthNavBar = () => {
-    const [ activeMoth, setActiveMonth ] = useState( 'Enero' );
+    const { state, dispatch } = useContext( CostContext );
+    const { mothSelected } = state;
     const navContentRef = useRef( null );
     const dragConent = useRef( false );
 
     const handleChangeMoth = ( moth )  => {
-        setActiveMonth( moth );
+        dispatch( {
+            type: 'changeMoth',
+            payload: moth
+        } );
     }
 
     const drag = (e) => {
@@ -32,23 +38,21 @@ const MonthNavBar = () => {
     }, [ navContentRef.current ] );
 
     return (
-        // <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <div className='nav-content' ref={ navContentRef }>
-                <ul className='nav' >
-                    { moths.map( ele => (
-                        <li className='nav-item' key={ ele }>
-                            <a 
-                                className={ `nav-link ${ ( ele === activeMoth )&& 'active' }` }
-                                href='#'
-                                onClick={ () => handleChangeMoth( ele ) }
-                            >
-                                { ele }
-                            </a>
-                        </li>
-                    ) ) }       
-                </ul>
-            </div>
-        // </div>
+        <div className='nav-content' ref={ navContentRef }>
+            <ul className='nav' >
+                { months.map( ele => (
+                    <li className='nav-item' key={ ele } onClick={ () => handleChangeMoth( ele ) }>
+                        <a 
+                            className={ `nav-link ${ ( ele === mothSelected )&& 'active' }` }
+                            href='#'
+                            
+                        >
+                            { ele }
+                        </a>
+                    </li>
+                ) ) }       
+            </ul>
+        </div>
     );
 }
 

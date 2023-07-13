@@ -1,9 +1,14 @@
 .list-container {
-    background: red;
+
     .list-item {
+        line-height: 45px;
+        -webkit-box-shadow: 0 0.2rem .3rem rgba(0,0,0,.15) !important;
+        -moz-box-shadow: 0 0.2rem .3rem rgba(0,0,0,.15) !important;
+        box-shadow: 0 0.2rem .3rem rgba(0,0,0,.15) !important;
+
+        margin-bottom: 14px !important;
         .list-item-left {
             align-items: stretch;
-            // background: green;
             flex: 1;
             span {
                 padding-left: 45px;
@@ -15,29 +20,55 @@
                 font-size: 3rem;
                 &.complete-true {
                     color: #75d58e;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    text-shadow: 0px 0px 10px #75d58e;
                 }
 
                 &.incomplete {
-                    color: purple;
+                    color: #e5e5e5;
                     font-size: 2.3rem;
                     height: 100%;
                     display: flex;
                     align-items: center;
+                    text-shadow: 0px 0px 10px #e5e5e5;                    
                 }
 
                 &.complete-false {
                     display: flex;
                     align-items: center;
-                    // bottom: 10px;
                     margin: 0;
                     padding: 0;
-                    color: red;
+                    color: #ff898d;
                     font-size: 2.3rem;
-                    background: purple;
                     height: 100%;
+                    text-shadow: 0px 0px 10px #ff898d;
                 }
-                // font-size: 10rem;
-                // font-size: 1rem;
+            }
+        }
+
+        .list-item-right {
+            i {
+                cursor: pointer;
+                padding: 10px;
+                border-radius: 20px;
+                transition: all .2s;
+                &:hover {
+                    background: rgba( 0, 0, 0, 0.1 );
+                }
+            }
+
+            .more {
+                color: #96df97;
+                font-weight: bold;
+                text-shadow: 0px 0px 1px #96df97;  
+            }
+
+            .less {
+                color: #d66d77;
+                font-weight: bold;
+                text-shadow: 0px 0px 1px #d66d77;  
             }
         }
     }

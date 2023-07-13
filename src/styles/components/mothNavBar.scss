@@ -23,6 +23,7 @@ body {
         scroll-behavior: auto;
         .nav {
             li {
+                pointer-events: none;
                 a {
                     pointer-events: none;
                 }
@@ -40,10 +41,10 @@ body {
                 display: flex;
                 align-items: flex-start;
                 color: #FFF;
-                // font-family: PT Sans;
                 font-size: 1.1rem;
                 user-select: none;
                 transition: font .1s;
+                pointer-events: none;
                 &.active {
                     font-weight: bold;
                     font-size: 1.3rem;

@@ -1,15 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import MonthNavBar from '../components/ui/MonthNavBar';
 import BalanceByMothComponent from '../components/MothInfo/BalanceByMothComponent';
 import ListExpesivesCmp from '../components/MothInfo/ListExpesivesCmp';
 import { getAllListCostRequest } from '../services/getAllListCostRequest';
+import { CostContext } from '../context/CostContext';
 
 const ExpensesMothPage = () => {
-
+    const { dispatch } = useContext( CostContext );
 
     useEffect( () => {
+        dispatch({
+            type: 'startLoadingGetAllCost'
+        });
+
         getAllListCostRequest().then( res => {
-            console.log( res );
+            dispatch({
+                type: 'setAllListCosts',
+                payload: res
+            });
+        } ).finally( () => {
+            dispatch({
+                type: 'stopLoadingGetAllCost'
+            });
         } )
     }, [] );
 

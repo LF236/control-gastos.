@@ -218,13 +218,6 @@
             "estado": "not_check"
         },
         {
-            "fecha": "2022-04-01T03:26:02.000Z",
-            "nombre": "Vivamus Associates",
-            "tipo": "spent",
-            "price": 8326,
-            "estado": "check_false"
-        },
-        {
             "fecha": "2022-01-29T04:59:23.000Z",
             "nombre": "Non Enim Institute",
             "tipo": "income",
@@ -2367,7 +2360,7 @@
             "estado": "not_check"
         },
         {
-            "fecha": "2022-07-01T05:20:34.000Z",
+            "fecha": "2022-07-02T05:20:34.000Z",
             "nombre": "Quisque Ornare Tortor Associates",
             "tipo": "spent",
             "price": 4258,
