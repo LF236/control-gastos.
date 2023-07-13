@@ -30,6 +30,23 @@ const monthReducer = ( state = {}, action ) => {
                     spent: action.payload.spent,
                 }
             }
+        case 'openModal': 
+            return {
+                ...state,
+                openModal: true
+            };
+        
+        case 'closeModal': 
+            return {
+                ...state,
+                openModal: false
+            };
+        case 'addEntry':{
+            return {
+                ...state,
+                allCost: [ action.payload, ...state.allCost ]
+            }
+        }
         default:
             return state;
     }

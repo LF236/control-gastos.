@@ -27,12 +27,12 @@ const BalanceByMothComponent = () => {
                     <div className='col-sm border-right text-center income'>
                         <span className='h5'>Ingresos</span>
                         <br />
-                        <span className='h2 font-weight-bold'>+${ state.selectedMoth.income }</span>
+                        <span className='h2 font-weight-bold number'>+${ state.selectedMoth.income }</span>
                     </div>
                     <div className='col-sm text-center cost'>
                         <span className='h5'>Gastos</span>
                         <br />
-                        <span className='h2 font-weight-bold'>-${ state.selectedMoth.spent }</span>
+                        <span className='h2 font-weight-bold number'>-${ state.selectedMoth.spent }</span>
                     </div>
                 </div>                
             </div>

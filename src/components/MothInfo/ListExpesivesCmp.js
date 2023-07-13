@@ -20,7 +20,7 @@ const calculateIcon = ( status ) => {
 const ListExpesivesCmp = () => {
     const [ listGroupedByDay, setListGroupedByDay ] = useState( {} );
 
-    const { state } = useContext( CostContext );
+    const { state, dispatch } = useContext( CostContext );
 
     useEffect( () => {
         setListGroupedByDay( {} );
@@ -28,6 +28,11 @@ const ListExpesivesCmp = () => {
         setListGroupedByDay( grouped );        
     }, [ state.selectedMoth.selectedCostByMoth ]);
     
+    const handleOpenModal = () => {
+        dispatch({
+            type: 'openModal'
+        })
+    }
 
     return (
         <div className='container mt-4 p-0 list-container'>
@@ -51,6 +56,13 @@ const ListExpesivesCmp = () => {
                     </ul>
                 </div>
             ) ) }
+
+
+        <div className='fixed-bottom button-add-movement-content' onClick={ handleOpenModal }>
+            <a className='btn btn-primary btn-lg btn-block font-weight-bold' href='#' role='button'>
+                    Agregar Movimiento
+                </a>
+            </div>
         </div>
     );
 }

@@ -8,6 +8,7 @@ const init = () => {
         mothSelected: 'Enero',
         allCost: [],
         isLoading: true,
+        openModal: false,
         selectedMoth: {
             selectedCostByMoth: [],
             income: 0,

@@ -4,9 +4,10 @@ import BalanceByMothComponent from '../components/MothInfo/BalanceByMothComponen
 import ListExpesivesCmp from '../components/MothInfo/ListExpesivesCmp';
 import { getAllListCostRequest } from '../services/getAllListCostRequest';
 import { CostContext } from '../context/CostContext';
+import CmpModal from '../components/ui/CmpModal';
 
 const ExpensesMothPage = () => {
-    const { dispatch } = useContext( CostContext );
+    const { dispatch, state } = useContext( CostContext );
 
     useEffect( () => {
         dispatch({
@@ -18,12 +19,23 @@ const ExpensesMothPage = () => {
                 type: 'setAllListCosts',
                 payload: res
             });
-        } ).finally( () => {
+        } )
+        .catch( err => {
+            dispatch({
+                type: 'setAllListCosts',
+                payload: []
+            });
+        } )
+        .finally( () => {
             dispatch({
                 type: 'stopLoadingGetAllCost'
             });
         } )
     }, [] );
+
+    if( state.isLoading ) {
+        return <></>
+    }
 
     return (
         <>
@@ -32,7 +44,9 @@ const ExpensesMothPage = () => {
 
             <div className='mt-4'>
                 <ListExpesivesCmp />
-            </div>
+            </div>       
+
+            <CmpModal />     
         </>
     );
 }
