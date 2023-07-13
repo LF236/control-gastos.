@@ -16,9 +16,13 @@ const calculateIcon = ( status ) => {
     }
 }
 
+const generateId = ( item ) => {    
+    return `${ item.name }_${ item.price }`.replace(/\s+/g, '');
+}
 
 const ListExpesivesCmp = () => {
     const [ listGroupedByDay, setListGroupedByDay ] = useState( {} );
+    const [ idCollapse, setIdCollapse ] = useState( null );
 
     const { state, dispatch } = useContext( CostContext );
 
@@ -34,6 +38,15 @@ const ListExpesivesCmp = () => {
         })
     }
 
+    const handleToggleCollapse = ( id ) => {       
+        if( id == idCollapse )  {
+            setIdCollapse( null );
+        } else {
+            setIdCollapse( id );
+        }
+    }
+
+
     return (
         <div className='container mt-4 p-0 list-container'>
             { sortListOfDates( Object.keys( listGroupedByDay ) ).reverse().map( key => (
@@ -41,6 +54,7 @@ const ListExpesivesCmp = () => {
                     <span className='font-weight-bold'>{ parseDate( key ) }</span>
                     <ul className='list-group p-0 mt-2'>
                         { listGroupedByDay[ key ].map( itemGroup => (
+                            <>
                             <li className='list-group-item mb-2 d-flex justify-content-between align-items-center list-item' key={ `${ itemGroup.nombre }_${ itemGroup.price }` }>
                                 <div className='list-item-left'>
                                     { calculateIcon( itemGroup.estado ) }
@@ -49,19 +63,46 @@ const ListExpesivesCmp = () => {
                                 
                                 <div className='list-item-right'>
                                     <span className={ `mr-2 ${ itemGroup.tipo === 'income' ? 'more' : 'less' }` }>{ `${ itemGroup.tipo === 'income' ? '+ ' : '- ' } $${ itemGroup.price }` }</span>
-                                    <i className='fa fa-angle-down' aria-hidden='true'></i>
+                                    <i 
+                                        className={ `fa fa-angle-${ generateId( itemGroup ) == idCollapse ? 'up' : 'down' } }` } 
+                                        onClick={ () => handleToggleCollapse( generateId( itemGroup ) ) }
+                                    />                                    
                                 </div>
                             </li>
+                            
+                            <div className={ `collapse mb-3 ${ generateId( itemGroup ) == idCollapse ? 'show' : '' }` }>
+                                <div className='card card-body'>
+                                    <div className='container'>
+                                        <div className='row flex-nowrap'>
+                                            <div className='col-sm border-right text-center'>
+                                                <span className='h5'>Cantidad:</span>
+                                                <span className='font-weight-bold number'> { itemGroup.price }</span>
+                                            </div>
+
+                                            <div className='col-sm text-center border-right'>
+                                                <span className='h5'>Tipo:</span>
+                                                <span className='font-weight-bold number'> { itemGroup.tipo == 'income' ? 'Ingreso' : 'Gasto' }</span>
+                                            </div>
+
+                                            <div className='col-sm text-center'>
+                                                <span className='h5'>Fecha:</span>
+                                                <span className='font-weight-bold number'> { new Date( itemGroup.fecha ).toLocaleDateString() }</span>
+                                            </div>
+                                        </div>                
+                                    </div>
+                                </div>
+                            </div>
+
+                            </>
                         ) ) }
                     </ul>
                 </div>
             ) ) }
 
-
-        <div className='fixed-bottom button-add-movement-content' onClick={ handleOpenModal }>
-            <a className='btn btn-primary btn-lg btn-block font-weight-bold' href='#' role='button'>
+            <div className='fixed-bottom button-add-movement-content' onClick={ handleOpenModal }>
+                <a className='btn btn-primary btn-lg btn-block font-weight-bold' href='#' role='button'>
                     Agregar Movimiento
-                </a>
+                </a>                
             </div>
         </div>
     );
